@@ -1,0 +1,35 @@
+name: BenAgentTaskManager
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: '16.0'
+settings:
+  base:
+    SWIFT_VERSION: 5.9
+packages:
+  Supabase:
+    url: https://github.com/supabase-community/supabase-swift.git
+    from: 2.0.0
+  Starscream:
+    url: https://github.com/daltoniam/Starscream.git
+    from: 4.0.0
+targets:
+  BenAgentTaskManager:
+    type: application
+    platform: iOS
+    sources:
+      - path: BenAgentTaskManager
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.BenAgentTaskManager
+        INFOPLIST_FILE: BenAgentTaskManager/Info.plist
+    dependencies:
+      - package: Supabase
+      - package: Starscream
+  BenAgentTaskManagerTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: BenAgentTaskManagerTests
+    dependencies:
+      - target: BenAgentTaskManager
